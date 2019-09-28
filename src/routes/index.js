@@ -13,6 +13,7 @@ router.use(function(req, res, next) {
 
 router.use(require("./auth"));
 router.use(require("./users"));
+router.use(require("./gardens"));
 
 if (process.env.NODE_ENV === "development") {
   router.use(function(req, res, next) {

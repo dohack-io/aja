@@ -46,7 +46,7 @@ router.post("/auth/login", async (req, res, next) => {
       iat: Math.floor(Date.now() / 1000) - 30
     };
     const token = jwt.sign(payload, jwtOptions.secretOrKey, options);
-    res.result = { message: "ok", token: token };
+    res.result = { message: "ok", token: token, user: user };
     next();
   } catch (error) {
     logger.error(error, { reqId: httpContext.get("reqId") });
