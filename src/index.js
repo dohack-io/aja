@@ -3,7 +3,8 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
-const routes = require('./routes')
+const routes = require('./routes');
+const passport = require('./lib/passport');
 const uuid = require("uuid");
 const httpContext = require("express-http-context");
 
@@ -29,8 +30,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
 
+app.use(passport.initialize());
+
 app.use(routes);
 
-app.listen(process.env.PORT || 3000, function() {
+app.listen(process.env.PORT || 3000, "0.0.0.0", function() {
   console.log(`Aja API running on port ${process.env.PORT || 3000}`);
 });

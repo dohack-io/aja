@@ -34,9 +34,14 @@ class User {
       .select()
       .where("id", id)
       .first();
-    if (!user) {
-      throw new ValidationError("User does not exist");
-    }
+    return user;
+  }
+
+  static async findByEmail(email) {
+    const user = await knex("users")
+      .select()
+      .where("email", email)
+      .first();
     return user;
   }
 }

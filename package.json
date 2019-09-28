@@ -4,6 +4,8 @@
   "description": "This is a template, please fill it with your teams data. Places to fill in data are marked with a //TODO. If you fail to do so, our jury can't evaluate your project.",
   "main": "index.js",
   "scripts": {
+    "migrate": "node_modules/.bin/knex migrate:latest",
+    "seed": "node_modules/.bin/knex seed:run",
     "start": "node src/index.js",
     "dev": "cross-env NODE_ENV=development nodemon src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -19,11 +21,15 @@
   },
   "homepage": "https://github.com/dohack-io/aja-backend#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "dotenv": "^8.1.0",
     "express": "^4.17.1",
     "express-http-context": "^1.2.3",
+    "jsonwebtoken": "^8.5.1",
     "knex": "^0.19.4",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
     "sqlite3": "^4.1.0",
     "uuid": "^3.3.3",
     "winston": "^3.2.1"

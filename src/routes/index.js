@@ -11,6 +11,7 @@ router.use(function(req, res, next) {
   next();
 });
 
+router.use(require("./auth"));
 router.use(require("./users"));
 
 if (process.env.NODE_ENV === "development") {
