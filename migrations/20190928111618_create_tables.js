@@ -28,6 +28,7 @@ exports.up = async knex => {
       .index();
     t.float("longitude", 8, 6).notNull();
     t.float("latitude", 8, 6).notNull();
+    t.float("size");
     t.timestamps(true, true);
     t.foreign("team_id")
       .references("id")

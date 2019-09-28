@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const logger = require("../../logger");
 const httpContext = require("express-http-context");
-const Garden = require('../../models/garden')
 const User = require("../../models/user");
 
 router.get("/user/:id/gardens", async (req, res, next) => {
