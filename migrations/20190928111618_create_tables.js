@@ -19,7 +19,7 @@ exports.up = async knex => {
     t.integer("team_id")
       .unsigned()
       .index();
-    t.float("langitude", 8, 6).notNull();
+    t.float("longitude", 8, 6).notNull();
     t.float("latitude", 8, 6).notNull();
     t.timestamps(true, true);
     t.foreign("team_id")
