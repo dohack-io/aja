@@ -16,6 +16,7 @@ class User {
       throw new ValidationError("Missing name or surname");
     }
     const res = await knex
+      .returning(["name", "surname", "email", "id"])
       .insert({
         name: this.name,
         surname: this.surname,

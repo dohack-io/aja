@@ -9,8 +9,12 @@ router.post("/gardens/search", async (req, res, next) => {
     reqId: httpContext.get("reqId"),
     body: req.body
   });
-  // Todo!
-  res.result = await Garden.closeTo();
+  if( !isNaN(req.body.radius) && !isNaN(req.body.longitude) && !isNaN(req.body.latitude) ) {
+    // radius search
+    res.result = await Garden.inRadius({radius: req.body.radius, longitude: req.body.longitude, latitude: req.body.latitude });
+  } else {
+    res.result = await Garden.closeTo();
+  }
   next();
 });
 

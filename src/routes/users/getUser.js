@@ -10,14 +10,13 @@ router.get("/user/:id", async (req, res, next) => {
   });
   try {
     const user = await User.getById(req.params.id);
-    res.result = { id: userId };
+    delete user.password;
+    res.result = user;
     next();
   } catch (error) {
     logger.error(error, { reqId: httpContext.get("reqId") });
     next(error);
   }
-  res.result = { status: "OK" };
-  next();
 });
 
 module.exports = router;

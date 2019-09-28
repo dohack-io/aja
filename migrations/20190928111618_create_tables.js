@@ -5,7 +5,10 @@ exports.up = async knex => {
       .primary();
     t.string("name").notNull();
     t.string("surname").notNull();
-    t.string("email").notNull();
+    t.string("email")
+      .notNull()
+      .unique()
+      .index();
     t.string("password").notNull();
     t.boolean("verified")
       .notNull()
@@ -26,13 +29,14 @@ exports.up = async knex => {
     t.integer("team_id")
       .unsigned()
       .index();
-    t.float("longitude", 8, 6).notNull();
-    t.float("latitude", 8, 6).notNull();
+    t.float("longitude", 8, 7).notNull();
+    t.float("latitude", 8, 7).notNull();
     t.float("size");
     t.timestamps(true, true);
     t.foreign("team_id")
       .references("id")
-      .inTable("teams");
+      .inTable("teams")
+      .onDelete("cascade");
   });
   await knex.schema.createTable("teammates", t => {
     t.integer("team_id")
@@ -44,10 +48,12 @@ exports.up = async knex => {
     t.timestamps(true, true);
     t.foreign("team_id")
       .references("id")
-      .inTable("teams");
+      .inTable("teams")
+      .onDelete("cascade");
     t.foreign("user_id")
       .references("id")
-      .inTable("users");
+      .inTable("users")
+      .onDelete("cascade");
   });
 };
 

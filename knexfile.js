@@ -1,10 +1,8 @@
+require("dotenv").config();
 module.exports = {
   development: {
-    useNullAsDefault: true,
-    client: "sqlite3",
-    connection: {
-      filename: "dev.sqlite3"
-    },
+    client: 'pg',
+    connection: process.env.DATABASE_URL,
     seeds: {
       directory: "./bin/seeds"
     }
