@@ -8,5 +8,9 @@ module.exports = {
     seeds: {
       directory: "./bin/seeds"
     }
+  },
+  production: {
+    client: 'pg',
+    connection: process.env.DATABASE_URL
   }
 };
