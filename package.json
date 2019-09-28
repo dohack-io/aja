@@ -4,6 +4,8 @@
   "description": "This is a template, please fill it with your teams data. Places to fill in data are marked with a //TODO. If you fail to do so, our jury can't evaluate your project.",
   "main": "index.js",
   "scripts": {
+    "start": "node src/index.js",
+    "dev": "cross-env NODE_ENV=development nodemon src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,6 +21,14 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "dotenv": "^8.1.0",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "express-http-context": "^1.2.3",
+    "knex": "^0.19.4",
+    "sqlite3": "^4.1.0",
+    "uuid": "^3.3.3",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "cross-env": "^6.0.0"
   }
 }

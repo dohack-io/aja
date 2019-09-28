@@ -4,6 +4,8 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const routes = require('./routes')
+const uuid = require("uuid");
+const httpContext = require("express-http-context");
 
 // CORS - allow origin from env file
 app.use(function(req, res, next) {
@@ -12,6 +14,13 @@ app.use(function(req, res, next) {
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept, Authorization"
   );
+  next();
+});
+
+// assign a unique identifier to each request to be able to identify requests in the logs
+app.use(httpContext.middleware);
+app.use(function(req, res, next) {
+  httpContext.set("reqId", uuid.v1());
   next();
 });
 
