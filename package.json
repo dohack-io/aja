@@ -1,0 +1,24 @@
+{
+  "name": "aja-backend",
+  "version": "1.0.0",
+  "description": "This is a template, please fill it with your teams data. Places to fill in data are marked with a //TODO. If you fail to do so, our jury can't evaluate your project.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dohack-io/aja-backend.git"
+  },
+  "author": "Aja team",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dohack-io/aja-backend/issues"
+  },
+  "homepage": "https://github.com/dohack-io/aja-backend#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.1.0",
+    "express": "^4.17.1"
+  }
+}
