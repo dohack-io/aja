@@ -1,5 +1,7 @@
 const express = require("express");
 const router = express.Router();
+const logger = require("../../logger");
+const httpContext = require("express-http-context");
 const jwt = require("jsonwebtoken");
 const jwtOptions = require("../../lib/jwtOptions");
 const User = require("../../models/user");
@@ -19,6 +21,9 @@ const authFail = function(cause) {
 };
 
 router.post("/auth/login", async (req, res, next) => {
+  logger.info("POST /auth/login", null, {
+    reqId: httpContext.get("reqId")
+  });
   if (!req.body.email || !req.body.password) {
     next({
       status: 401,
@@ -46,7 +51,8 @@ router.post("/auth/login", async (req, res, next) => {
       iat: Math.floor(Date.now() / 1000) - 30
     };
     const token = jwt.sign(payload, jwtOptions.secretOrKey, options);
-    res.result = { message: "ok", token: token, user: user };
+    delete user.password;
+    res.result = { token: token, user: user };
     next();
   } catch (error) {
     logger.error(error, { reqId: httpContext.get("reqId") });
