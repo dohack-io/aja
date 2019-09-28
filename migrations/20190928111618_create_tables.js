@@ -32,10 +32,12 @@ exports.up = async knex => {
     t.timestamps(true, true);
   });
   await knex.schema.createTable("teammates", t => {
-    t.index("team_id")
+    t.integer("team_id")
       .unsigned()
-      .primary();
-    t.index("user_id").unsigned();
+      .index();    
+    t.integer("user_id")
+      .unsigned()
+      .index();
     t.timestamps(true, true);
     t.foreign("team_id")
       .references("id")
