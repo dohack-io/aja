@@ -12,6 +12,13 @@ exports.up = async knex => {
       .defaultTo(false);
     t.timestamps(true, true);
   });
+  await knex.schema.createTable("teams", t => {
+    t.increments("id")
+      .unsigned()
+      .primary();
+    t.string("name").notNull();
+    t.timestamps(true, true);
+  });
   await knex.schema.createTable("gardens", t => {
     t.increments("id")
       .unsigned()
@@ -25,13 +32,6 @@ exports.up = async knex => {
     t.foreign("team_id")
       .references("id")
       .inTable("teams");
-  });
-  await knex.schema.createTable("teams", t => {
-    t.increments("id")
-      .unsigned()
-      .primary();
-    t.string("name").notNull();
-    t.timestamps(true, true);
   });
   await knex.schema.createTable("teammates", t => {
     t.integer("team_id")
