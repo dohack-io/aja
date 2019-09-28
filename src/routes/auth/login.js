@@ -29,7 +29,7 @@ router.post("/auth/login", async (req, res, next) => {
   const email = req.body.email;
   const password = req.body.password;
   try {
-    const user = await User.findByEmail(email);
+    const user = await User.getByEmail(email);
     if (!user) {
       next(authFail("User Not Found"));
       return;
@@ -42,7 +42,7 @@ router.post("/auth/login", async (req, res, next) => {
       expiresIn: "1h"
     };
     const payload = {
-      sub: user._id,
+      sub: user.id,
       iat: Math.floor(Date.now() / 1000) - 30
     };
     const token = jwt.sign(payload, jwtOptions.secretOrKey, options);

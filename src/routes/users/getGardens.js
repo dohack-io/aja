@@ -17,7 +17,8 @@ router.get("/user/:id/gardens", async (req, res, next) => {
     });
     return;
   }
-  res.result = { status: "OK" };
+  const gardens = await User.getGardensById(req.params.id);
+  res.result = gardens;
   next();
 });
 
