@@ -26,12 +26,24 @@ class Garden {
       throw new ValidationError("Invalid location");
     }
     const res = await knex
+      .returning("id")
       .insert({
         langitude: this.langitude,
         latitude: this.latitude
       })
       .into("gardens");
     return res[0];
+  }
+
+  static async update(id, data) {
+    if (isNaN(id) || id < 0) {
+      throw new ValidationError("Invalid garden ID");
+    }
+    console.log(data)
+    const garden = await knex("gardens")
+      .where("id", id)
+      .update(data, ["id", "team_id", "longitude", "latitude", "created_at", "updated_at"]);
+    return garden[0];
   }
 
   static async getById(id) {

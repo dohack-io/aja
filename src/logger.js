@@ -25,6 +25,12 @@ if (process.env.NODE_ENV !== "production") {
       level: "debug"
     })
   );
+  loggerConfig.exceptionHandlers.push(
+    new transports.Console({
+      format: format.simple(),
+      level: "debug"
+    })
+  );
 }
 
 module.exports = createLogger(loggerConfig);

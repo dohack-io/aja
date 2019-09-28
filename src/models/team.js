@@ -17,10 +17,12 @@ class Team {
       throw new ValidationError("Invalid owner ID");
     }
     const res = await knex
+      .returning("id")
       .insert({
         name: this.name
       })
       .into("teams");
+      console.log(res)
     await knex
       .insert({
         team_id: res[0],
