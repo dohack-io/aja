@@ -1,5 +1,5 @@
 # Aja Backend Repository
-This is the backend repository of the Aja team. For more information on the generell project please visit the [frontend README](https://github.com/dohack-io/aja-frontend/blob/master/README.md).
+This is the backend repository of the Aja team. For more information on the general project please visit the [frontend README](https://github.com/dohack-io/aja-frontend/blob/master/README.md).
 
 The here included server runs on NodeJs and uses the express framework to create a small API.
 
