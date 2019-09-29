@@ -6,9 +6,9 @@ const User = require("../../models/user");
 const Garden = require("../../models/garden");
 const Post = require("../../models/post");
 
-router.post("/user/:userid/garden/:gardenid/comments", async (req, res, next) => {
+router.post("/user/:userid/garden/:gardenid/posts", async (req, res, next) => {
   logger.info(
-    "POST /user/%s/garden/%s/comments",
+    "POST /user/%s/garden/%s/posts",
     req.params.userid,
     req.params.gardenid,
     {
