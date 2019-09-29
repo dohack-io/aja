@@ -1,26 +1,49 @@
-# Template Repository
-This is a template, please fill it with your teams data. Places to fill in data are marked with a //TODO. If you fail to do so, our jury can't evaluate your project. 
+# Aja Backend Repository
+This is the backend repository of the Aja team. For more information on the generell project please visit the [frontend README](https://github.com/dohack-io/aja-frontend/blob/master/README.md).
 
-## Description 
-//TODO: describe your project
+The here included server runs on NodeJs and uses the express framework to create a small API.
 
-## Built with
-//TODO: lists the technologies you use and their purpose
+Other technologies
+* Authentication: Json web tokens
+* Logging: Winston
+* Database: PostgreSQL
 
-## What benefit will your work bring in smart city context?
-//TODO: list benefits and tell us your motivation in working on this topic
+## Endpoints
+*POST*   **/auth/register**\
+Register a new user. A 1h-valid JWT is returned together with the profile info of the user.
 
-## What were challenges you encountered and Lessons Learned?
-//TODO: describe challenges you encountered and how you solved them. also name your lessons learned
 
-## About your team
-//TODO: describe each team member with their background knowledge
+*POST*   **/auth/login**\
+Login with email and password. A 1h-valid JWT is returned together with the profile info of the user.
 
-## What's next for your project?
-//TODO: is there anything you've planned to work on after this hackathon? you've got some ideas of features to add? 
 
-## How does it look?
-//TODO: got any screenshots? post them here!
+*GET*   **/garden/:id**\
+Get garden details.
 
-## Anything to add?
-//TODO: add additional information. Is there soemthing you couldn't mention before? Do you have some videos or demos of your project?
+
+*GET*   **/garden/:id**\
+Get garden details.
+
+
+*POST*   **/gardens/search**\
+Post a `radius`, `longitude`, and `latitude` to recieve all gardens in the given radius around the gps position.
+
+
+*GET*   **/user/:id**\
+Get the user details.
+
+
+*GET*   **/user/:id/gardens**\
+Get the gardens the user is taking care of.
+
+
+*POST*   **/user/:id/garden/:id**\
+Add the garden to the user to take care of.
+
+
+*DELETE*   **/user/:id/garden/:id**\
+Remove the garden from the ones the user takes care of.
+
+
+*POST*   **/user/:id/garden/:id/posts**\
+Add a new post to a garden.
